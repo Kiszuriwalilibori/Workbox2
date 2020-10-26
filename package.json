@@ -2,13 +2,9 @@
   "name": "workbox-tutorial",
   "version": "1.0.0",
   "description": "",
-  "scripts": {
-    "serve": "http-server build -c-1"
-  },
-  "author": "Jad Joubran",
+  "author": "PM",
   "license": "MIT",
   "devDependencies": {
-    "http-server": "^0.12.3",
     "workbox-cli": "^5.1.4"
   },
   "dependencies": {}
