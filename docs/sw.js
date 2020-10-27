@@ -3,10 +3,45 @@ workbox.precaching.precacheAndRoute([{"revision":"b6cb14dbfa1eb45524431e9faae19d
 
 console.log('this is my custom service worker');
 
+// workbox.routing.registerRoute(
+//     new RegExp('https://jsonplaceholder.typicode.com/users'),
+//     workbox.strategies.cacheFirst()
+//   );
+
 workbox.routing.registerRoute(
-    new RegExp('https://jsonplaceholder.typicode.com/users'),
-    workbox.strategies.cacheFirst()
-  );
+  ({request}) => request.destination === 'image',
+  new CacheFirst({
+    cacheName: 'imagesCache',
+    plugins: [
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 30 * 24 * 60 * 60, 
+      }),
+    ],
+  })
+);
+
+workbox.routing.registerRoute(
+  ({request}) => request.destination === 'style',
+  new StaleWhileRevalidate({
+    cacheName: 'styleCache',
+  })
+);
+
+workbox.routing.registerRoute(
+  ({request}) => request.destination === 'script',
+  new StaleWhileRevalidate({
+    cacheName: 'scriptsCache',
+  })
+);
+
+workbox.routing.registerRoute(
+  ({request}) => request.destination === 'document',
+  new StaleWhileRevalidate({
+    cacheName: 'documentCache',
+  })
+);
+
 
 
 //workbox.precaching.precacheAndRoute([])
