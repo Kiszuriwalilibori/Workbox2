@@ -10,7 +10,7 @@ console.log('this is my custom service worker');
 
 workbox.routing.registerRoute(
   ({request}) => request.destination === 'image',
-  new cacheFirst({
+  new workbox.strategies.cacheFirst({
     cacheName: 'imagesCache',
     plugins: [
       new ExpirationPlugin({
@@ -23,28 +23,28 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
   ({request}) => request.destination === 'style',
-  new staleWhileRevalidate({
+  new workbox.strategies.staleWhileRevalidate({
     cacheName: 'styleCache',
   })
 );
 
 workbox.routing.registerRoute(
   ({request}) => request.destination === 'script',
-  new staleWhileRevalidate({
+  new workbox.strategies.staleWhileRevalidate({
     cacheName: 'scriptsCache',
   })
 );
 
 workbox.routing.registerRoute(
   ({request}) => request.destination === 'document',
-  new staleWhileRevalidate({
+  new workbox.strategies.staleWhileRevalidate({
     cacheName: 'documentCache',
   })
 );
 
 workbox.routing.registerRoute(
   ({request}) => request.destination === 'font',
-  new cacheFirst({
+  new workbox.strategies.cacheFirst({
     cacheName: 'fontCache',
   })
 );
