@@ -4,10 +4,10 @@ workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
 
 console.log('this is my custom service worker');
 
-// workbox.routing.registerRoute(
-//     new RegExp('https://jsonplaceholder.typicode.com/users'),
-//     workbox.strategies.cacheFirst()
-//   );
+workbox.routing.registerRoute(
+    new RegExp('https://jsonplaceholder.typicode.com/users'),
+    workbox.strategies.cacheFirst()
+  );
 
 workbox.routing.registerRoute(
   /.*\.(?:png|jpg|jpeg|svg|webp|gif)/,
