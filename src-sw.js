@@ -6,7 +6,7 @@ console.log('this is my custom service worker');
 
 workbox.routing.registerRoute(
     new RegExp('https://jsonplaceholder.typicode.com/users'),
-    workbox.strategies.cacheFirst()
+    workbox.strategies.cacheFirst({cacheName:'usersCache'})
   );
 
 workbox.routing.registerRoute(
@@ -36,7 +36,8 @@ workbox.routing.registerRoute(
   })
 );
 workbox.routing.registerRoute(
-  /index\.html/,
+  ///index\.html/,
+  /.*\.(?:HTML)/,
   workbox.strategies.staleWhileRevalidate({
     cacheName: 'documentCache',
   })
