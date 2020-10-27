@@ -24,7 +24,9 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
   new RegExp('.*\.css'),
-  workbox.strategies.staleWhileRevalidate()
+  workbox.strategies.staleWhileRevalidate({
+    cacheName: 'styleCache',
+  })
 );
 
 workbox.routing.registerRoute(
