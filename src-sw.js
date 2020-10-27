@@ -1,6 +1,6 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/3.0.0/workbox-sw.js');
 
-workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
+//workbox.precaching.precacheAndRoute(self.__WB_MANIFEST);
 
 console.log('this is my custom service worker');
 
@@ -23,7 +23,8 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-  new RegExp('.*\.css'),
+  // new RegExp('.*\.css'),
+  /.*\.css/,
   workbox.strategies.staleWhileRevalidate({
     cacheName: 'styleCache',
   })
