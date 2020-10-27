@@ -24,13 +24,17 @@
             <h2>Buenos Aires, Argentina</h2>
             <p>$400 • Direct</p>
         </div>
-
+        <div class="card">
+            <h2>Buena Vista, Argentina</h2>
+            <p>$500 • Direct</p>
+        </div>
     </div>
 
     <script async src="js/app.js"></script>
     <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
+        const prefix = location.pathname.replace(/\/(index\.html)?$/, ''); 
            navigator.serviceWorker.register('./sw.js');
         });
       }
