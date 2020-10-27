@@ -36,7 +36,7 @@ workbox.routing.registerRoute(
   })
 );
 workbox.routing.registerRoute(
-  new RegExp('index\.html'),
+  /index\.html/,
   workbox.strategies.staleWhileRevalidate({
     cacheName: 'documentCache',
   })
