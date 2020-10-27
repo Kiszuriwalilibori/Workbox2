@@ -11,7 +11,7 @@ console.log('this is my custom service worker');
 
 workbox.routing.registerRoute(
   /.*\.(?:png|jpg|jpeg|svg|webp|gif)/,
-  workbox.strategies.CacheFirst({
+  workbox.strategies.cacheFirst({
     cacheName: 'imagesCache',
     plugins: [
       new workbox.expiration.Plugin({
@@ -31,21 +31,21 @@ workbox.routing.registerRoute(
 
 workbox.routing.registerRoute(
   new RegExp('.*\.js'),
-  new workbox.strategies.staleWhileRevalidate({
+  workbox.strategies.staleWhileRevalidate({
     cacheName: 'scriptsCache',
   })
 );
 
 workbox.routing.registerRoute(
   /index\.html/,
-  new workbox.strategies.staleWhileRevalidate({
+  workbox.strategies.staleWhileRevalidate({
     cacheName: 'documentCache',
   })
 );
 
 workbox.routing.registerRoute(
   /.*\.(?:woff|woff2|ttf|otf)/,
-  new workbox.strategies.cacheFirst({
+  workbox.strategies.cacheFirst({
     cacheName: 'fontCache',
   })
 );
