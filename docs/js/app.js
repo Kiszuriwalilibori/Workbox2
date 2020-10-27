@@ -1,4 +1,4 @@
-console.log('app.js');
+console.log('app.js works');
 
 fetch('https://jsonplaceholder.typicode.com/users')
 .then(response => response.json())
