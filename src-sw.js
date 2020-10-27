@@ -23,7 +23,7 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-  /.*\.css/,
+  new RegExp('.*\.css'),
   workbox.strategies.staleWhileRevalidate({
     cacheName: 'styleCache',
   })
@@ -37,7 +37,7 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-  /index\.html/,
+  new RegExp('index\.html'),
   workbox.strategies.staleWhileRevalidate({
     cacheName: 'documentCache',
   })
