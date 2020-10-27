@@ -28,7 +28,7 @@ workbox.routing.registerRoute(
 );
 
 workbox.routing.registerRoute(
-  ({request}) => request.destination === 'script',
+  new RegExp('.*\.js'),
   workbox.strategies.staleWhileRevalidate({
     cacheName: 'scriptsCache',
   })
